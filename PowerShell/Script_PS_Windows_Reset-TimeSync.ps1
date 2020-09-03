@@ -8,10 +8,6 @@
     if ($DomainController)
     {
         w32tm /config /manualpeerlist:"0.ca.pool.ntp.org 1.ca.pool.ntp.org 2.ca.pool.ntp.org 3.ca.pool.ntp.org" /syncfromflags:manual /reliable:yes /update
-        w32tm /resync /rediscover
-        w32tm /query /source
-        Restart-Service W32Time
-        w32tm /query /source
     }
 
     if ($Client)
