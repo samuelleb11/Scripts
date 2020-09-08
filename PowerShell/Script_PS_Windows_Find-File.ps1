@@ -1,4 +1,4 @@
-﻿function Find-File ($SearchString, $ExcludedDriveLetters, $SearchPath, [Switch]$LocalDisksOnly, [ValidateSet("Text",“CSV”,”HTML”,”XML”)]$ExportTo, [ValidateSet("TB","GB”,”MB”,”KB”)]$RoundSizeTo = "MB", $SizeDecimals = 2)
+﻿function Find-File ($SearchString, $ExcludedDriveLetters, $SearchPath, [Switch]$LocalDisksOnly, [ValidateSet("Text",“CSV”,”HTML”,”XML”)]$ExportTo, [ValidateSet("TB","GB”,”MB”,”KB”)]$RoundSizeTo = "MB", $SizeDecimals = 2, $ExportPath)
 {
     if ([string]::IsNullOrEmpty($SearchPath)){$PSDriveList = Get-WmiObject -Class Win32_logicaldisk}
 
@@ -35,8 +35,10 @@
 
     if (![string]::IsNullOrEmpty($ExportTo))
     {
-        $ExportPath = Read-Host -Prompt "Please enter the file name (.txt, .html, .csv, .xml)"
-
+        if ([string]::IsNullOrEmpty($ExportPath))
+        {
+            $ExportPath = Read-Host -Prompt "Please enter the file name (.txt, .html, .csv, .xml)"
+        }
         if ($ExportTo -eq "Text")
         {
             $Result | Out-File -FilePath $ExportPath
