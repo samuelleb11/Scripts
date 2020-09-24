@@ -61,7 +61,7 @@ function Check-VMOverprovisionning
             if ($VMDiskSizesList -eq $null)
             {
                 Write-Host ""
-                Write-Host "No VHDs on drive"$PSDrive.DeviceID"are attached ... Skipping"
+                Write-Host "No VHDs on drive"$CSVInfo.DeviceID"are attached ... Skipping"
             }
             else
             {
