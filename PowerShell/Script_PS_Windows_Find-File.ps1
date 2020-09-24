@@ -59,4 +59,4 @@
     else{return $Result | ft}
 }
 
-Find-File -SearchString "*.pst" -ExcludedDriveLetters 'C:' -RoundSizeTo MB
+Find-File -SearchString "*.pst" -ExportTo CSV -ExportPath Test3.csv
