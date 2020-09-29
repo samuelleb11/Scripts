@@ -1,0 +1,1 @@
+﻿Get-ADUser -Filter {Enabled -eq $TRUE} -Properties Name,SamAccountName,LastLogonDate | Where {($_.LastLogonDate -gt (Get-Date).AddDays(-30)) -and ($_.LastLogonDate -ne $NULL) -and ($_.SamAccountName -notlike "*Health*") -and ($_.SamAccountName -notlike "*admin*") -and ($_.SamAccountName -notlike "*conference*")} | Sort | Select Name,SamAccountName,LastLogonDate
