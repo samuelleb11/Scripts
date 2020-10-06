@@ -2,7 +2,6 @@
 # Declare Global Variables and Functions here
 #--------------------------------------------
 
-
 #Sample function that provides the location of the script
 function Get-ScriptDirectory
 {
@@ -30,5 +29,32 @@ function Get-ScriptDirectory
 
 #Sample variable that provides the location of the script
 [string]$ScriptDirectory = Get-ScriptDirectory
-
+$TryCounter = 0
+function Reset-TryCounter() { $TryCounter = 0 }
+Function Get-FolderPath($initialDirectory = "")
+{
+	[System.Reflection.Assembly]::LoadWithPartialName("System.windows.forms") | Out-Null
+	
+	$foldername = New-Object System.Windows.Forms.FolderBrowserDialog
+	$foldername.Description = "Select a folder"
+	$foldername.rootfolder = "MyComputer"
+	$foldername.SelectedPath = $initialDirectory
+	
+	if ($foldername.ShowDialog() -eq "OK")
+	{
+		$folder += $foldername.SelectedPath
+	}
+	return $folder
+}
+Function Get-FilePath($initialDirectory = "")
+{
+	$openFileDialog = New-Object windows.forms.openfiledialog
+	$openFileDialog.initialDirectory = $initialDirectory
+	$openFileDialog.title = "Select path"
+	$openFileDialog.filter = "All files (*.*)| *.*"
+	$openFileDialog.ShowHelp = $True
+	$result = $openFileDialog.ShowDialog()
+	$result
+	return $OpenFileDialog.filename
+}
 
