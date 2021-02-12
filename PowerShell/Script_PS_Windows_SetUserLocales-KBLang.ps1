@@ -4,7 +4,7 @@ $DesiredKeyboardLang = "0C0C:00001009" # "0C0C:00011009" for CMS "0C0C:00001009"
 
 # Sys vars
 $SysLangArr = @('en-us','en-ca','fr-fr','fr-ca')
-$KeyboardLangArr = @('1009:00011009','1009:00000409','0C0C:00001009','0C0C:00011009','0C0C:0000040C','0C0C:00000409')
+$KeyboardLangArr = @('1009:00011009','1009:00000409','0C0C:00001009','0C0C:00011009','0C0C:0000040C','0C0C:00000409','0409:00000409}')
 
 # Logic
 $languages = Get-WinUserLanguageList
